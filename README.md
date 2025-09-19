@@ -1,7 +1,3 @@
-# DeepPeru - Login Template
-
-Template con autenticación usando NestJS (backend) y Next.js (frontend).
-
 ## Estructura del Proyecto
 
 ```
