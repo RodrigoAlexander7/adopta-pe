@@ -19,7 +19,7 @@
         "src/*"
       ],
       "@generated/*": [
-        "./src/generated/*"
+        "./generated/*"
       ]
     },
     "incremental": true,
