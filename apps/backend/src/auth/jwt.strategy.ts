@@ -23,6 +23,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       private readonly configService: ConfigService,
    ) {
       super({
+         // new -> now we extract the token from cookies
          jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
          ignoreExpiration: false,
          secretOrKey: configService.get<string>('AUTH_SECRET'), // our secret key
