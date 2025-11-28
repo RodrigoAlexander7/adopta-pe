@@ -24,7 +24,7 @@ export class AuthController {
   @UseGuards(AuthGuard('google'))
   @Get('google/callback')
   async googleAuthCallback(@Request() req, @Res() res) {
-    const frontendUrl = this.configService.get<string>('FRONTEND_URL');
+    const frontendUrl = this.configService.get<string>('frontendURL');
 
     try {
       const { accessToken } = await this.authService.callbackOauthGoogle(

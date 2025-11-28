@@ -13,8 +13,6 @@ import configuration from './configs/configuration';
 @Module({
   // Imports are allways modules, not services
   imports: [
-    AuthModule,
-    UsersModule,
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema,
@@ -22,11 +20,13 @@ import configuration from './configs/configuration';
     }),
     JwtModule.registerAsync({
       useFactory: (configService: ConfigService) => ({
-        secret: configService.get<string>('AUTH_SECRET'),
+        secret: configService.get<string>('authSecret'),
         global: true,
       }),
       inject: [ConfigService],
     }),
+    UsersModule,
+    AuthModule,
     PrismaModule,
   ],
   controllers: [AppController],
