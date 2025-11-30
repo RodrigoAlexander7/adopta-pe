@@ -14,7 +14,7 @@ RUN pnpm install
 
 COPY . .
 
-RUN pnpx prisma generate
+# RUN pnpx prisma generate
 
 # IMPORTANT: I FAILES HERE -> NEVER RUN MIGRATIONS ON A CONTAINER BUILD
 # |-> THIS SHOULD BE DONE ON CONTAINER STARTUP (COMANDLINE LIKE: 'docker exec -it backend-container pnpx prisma migrate dev')

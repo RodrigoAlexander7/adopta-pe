@@ -1,7 +1,5 @@
 generator client {
-  provider     = "prisma-client"
-  output       = "../generated/prisma"
-  moduleFormat = "cjs"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -9,10 +7,157 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  name      String?
+  id        String   @id @default(uuid())
   email     String   @unique
-  image     String?
+  password  String
+  name      String
+  phone     String?
+  role      UserRole @default(ADOPTER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  // Relaciones CON NOMBRES ÚNICOS
+  adopterProfile AdopterProfile?
+  shelter        Shelter?
+  admin          Admin?
+  adoptionForms  AdoptionForm[]  @relation("UserAdoptionForms")
+
+  @@map("users")
 }
+
+model AdopterProfile {
+  id               String  @id @default(uuid())
+  userId           String  @unique
+  address          String?
+  city             String
+  hasPets          Boolean @default(false)
+  petExperience    String?
+  householdMembers Int?
+
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  adoptions AdoptionForm[] @relation("AdopterAdoptions")
+
+  @@map("adopter_profiles")
+}
+
+model Shelter {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  email       String   @unique
+  phone       String?
+  address     String
+  city        String
+  website     String?
+  logo        String?
+  isVerified  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pets   Pet[]
+
+  @@map("shelters")
+}
+
+model Admin {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  department  String?
+  permissions String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("admins")
+}
+
+model Pet {
+  id          String     @id @default(uuid())
+  name        String
+  species     PetSpecies
+  breed       String?
+  age         Int?
+  ageUnit     AgeUnit?
+  gender      Gender
+  size        PetSize
+  color       String?
+  description String?
+  healthInfo  String?
+  isAdopted   Boolean    @default(false)
+  isActive    Boolean    @default(true)
+  images      String[]
+  createdAt   DateTime   @default(now())
+
+  shelterId     String
+  shelter       Shelter        @relation(fields: [shelterId], references: [id], onDelete: Cascade)
+  adoptionForms AdoptionForm[] @relation("PetAdoptionForms")
+
+  @@map("pets")
+}
+
+model AdoptionForm {
+  id        String         @id @default(uuid())
+  status    AdoptionStatus @default(PENDING)
+  message   String?
+  notes     String?
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  // Relación con Pet
+  petId String
+  pet   Pet    @relation(fields: [petId], references: [id], onDelete: Cascade, name: "PetAdoptionForms")
+
+  // Relación con User (quien crea el formulario)
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, name: "UserAdoptionForms")
+
+  // Relación con AdopterProfile
+  adopterProfileId String?
+  adopterProfile   AdopterProfile? @relation(fields: [adopterProfileId], references: [id], onDelete: Cascade, name: "AdopterAdoptions")
+
+  @@map("adoption_forms")
+}
+
+// Enums
+enum UserRole {
+  ADOPTER
+  SHELTER
+  ADMIN
+}
+
+enum PetSpecies {
+  DOG
+  CAT
+  BIRD
+  RABBIT
+  SQUIRREL
+  OTHER
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum PetSize {
+  SMALL
+  MEDIUM
+  LARGE
+}
+
+enum AgeUnit {
+  YEARS
+  MONTHS
+}
+
+enum AdoptionStatus {
+  PENDING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  COMPLETED
+}
+
+// Corregido por DeepSeek pq ya tengo sueño y no funciona v':
