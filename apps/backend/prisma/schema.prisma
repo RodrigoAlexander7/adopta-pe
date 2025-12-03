@@ -1,5 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat = "cjs"
 }
 
 datasource db {
@@ -9,13 +11,12 @@ datasource db {
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
-  password  String
   name      String
   phone     String?
   role      UserRole @default(ADOPTER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
+  image     String?
   // Relaciones CON NOMBRES ÚNICOS
   adopterProfile AdopterProfile?
   shelter        Shelter?
