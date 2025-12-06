@@ -2,10 +2,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from '@/app.controller';
 import { AppService } from '@/app.service';
 import { AuthModule } from '@/auth/auth.module';
-import { UsersModule } from '@/users/users.module';
+import { PetsModule } from '@/modules/pets/pets.module';
+import { AdoptionsModule } from '@/modules/adoptions/adoptions.module';
+import { UsersModule } from '@/modules/users/users.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { PrismaModule } from './prisma/prisma.module';
+import { PrismaModule } from '@/shared/infrastructure/persistence/prisma/prisma.module';
 
 import { validationSchema } from './configs/validations';
 import configuration from './configs/configuration';
@@ -26,6 +28,8 @@ import configuration from './configs/configuration';
       inject: [ConfigService],
     }),
     UsersModule,
+    PetsModule,
+    AdoptionsModule,
     AuthModule,
     PrismaModule,
   ],

@@ -1,13 +1,15 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from '@/users/users.service';
+import { FindUserByEmailUseCase } from '@/modules/users/application/use-cases/find-user-by-email.use-case';
+import { CreateUserUseCase } from '@/modules/users/application/use-cases/create-user.use-case';
 
 @Injectable()
 export class AuthService {
   // dependences injection
   constructor(
     private readonly jwtService: JwtService,
-    private readonly usersService: UsersService,
+    private readonly findUserByEmailUseCase: FindUserByEmailUseCase,
+    private readonly createUserUseCase: CreateUserUseCase,
   ) {}
 
   //we dont use access token nor refresh tken, we create our own jwt
@@ -15,10 +17,10 @@ export class AuthService {
     console.log('EMAIL RECIBIDO:', email);
     if (!email) throw new UnauthorizedException('Email not found from Google');
 
-    let user = await this.usersService.findByEmail(email);
+    let user = await this.findUserByEmailUseCase.execute(email);
 
     if (!user) {
-      user = await this.usersService.create({
+      user = await this.createUserUseCase.execute({
         name,
         email,
         image,
