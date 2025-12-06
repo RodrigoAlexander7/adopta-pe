@@ -1,17 +1,18 @@
-import { Injectable } from '@nestjs/common';
-// For now, it just returns what we have. API might want more data.
-// Reusing FindUserByEmail or generic logic.
-// But controller used req.user which usually comes from JWT strategy.
-// JWT strategy usually validates user exists. 
-// So this might seem redundant if we already have the user object, but for clean arch:
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { UserRepository } from '../../domain/repositories/user.repository';
+import { User } from '../../domain/entities/user.entity';
 
+@Injectable()
 export class GetUserProfileUseCase {
-  // If we receive the full user object from the guard/decorator, we might not need to query DB.
-  // But if we only have ID from JWT, we query.
-  // The current controller implementation was: `return req.user;`
-  // So it returns whatever Passport sets.
-  
-  execute(user: any) {
+  constructor(private readonly userRepository: UserRepository) {}
+
+  async execute(userId: string): Promise<User> {
+    const user = await this.userRepository.findById(userId);
+    
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
     return user;
   }
 }
