@@ -12,7 +12,7 @@ export class PrismaPetRepository implements PetRepository {
     const data = PetMapper.toPersistence(pet);
     const { id, ageUnit, ...rest } = data; // Handle ageUnit if missing in mapped data
 
-    const created = await this.prisma.client.pet.create({
+    const created = await this.prisma.pet.create({
       data: {
         ...rest,
         id: id || undefined,
@@ -24,14 +24,14 @@ export class PrismaPetRepository implements PetRepository {
   }
 
   async findAll(filters?: any): Promise<Pet[]> {
-    const found = await this.prisma.client.pet.findMany({
+    const found = await this.prisma.pet.findMany({
       where: filters, // Basic filtering support
     });
     return found.map(PetMapper.toDomain);
   }
 
   async findById(id: string): Promise<Pet | null> {
-    const found = await this.prisma.client.pet.findUnique({
+    const found = await this.prisma.pet.findUnique({
       where: { id },
     });
     return found ? PetMapper.toDomain(found) : null;
@@ -50,7 +50,7 @@ export class PrismaPetRepository implements PetRepository {
     
     // Warning: Mapping Enums.
     
-    const updated = await this.prisma.client.pet.update({
+    const updated = await this.prisma.pet.update({
       where: { id },
       data: {
         // We would need to map each field efficiently.
@@ -68,6 +68,6 @@ export class PrismaPetRepository implements PetRepository {
   }
 
   async delete(id: string): Promise<void> {
-    await this.prisma.client.pet.delete({ where: { id } });
+    await this.prisma.pet.delete({ where: { id } });
   }
 }
