@@ -10,11 +10,11 @@ export class PrismaStoryRepository implements StoryRepository {
 
   async create(story: Story): Promise<void> {
     const data = StoryMapper.toPersistence(story);
-    await this.prisma.story.create({ data });
+    await this.prisma.client.story.create({ data });
   }
 
   async findAll(): Promise<Story[]> {
-    const stories = await this.prisma.story.findMany({
+    const stories = await this.prisma.client.story.findMany({
       include: { user: true },
       orderBy: { createdAt: 'desc' },
     });
@@ -22,7 +22,7 @@ export class PrismaStoryRepository implements StoryRepository {
   }
 
   async findByUserId(userId: string): Promise<Story[]> {
-    const stories = await this.prisma.story.findMany({
+    const stories = await this.prisma.client.story.findMany({
       where: { userId },
       include: { user: true },
       orderBy: { createdAt: 'desc' },

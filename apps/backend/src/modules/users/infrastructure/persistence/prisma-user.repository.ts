@@ -27,7 +27,7 @@ export class PrismaUserRepository implements UserRepository {
     // If the domain entity already has an ID (e.g. passed from frontend or generated in usecase), use it.
     // If not, let Prisma generate it.
     
-    const created = await this.prisma.user.create({
+    const created = await this.prisma.client.user.create({
       data: {
         ...rest,
         id: id || undefined,
@@ -37,14 +37,14 @@ export class PrismaUserRepository implements UserRepository {
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    const found = await this.prisma.user.findUnique({
+    const found = await this.prisma.client.user.findUnique({
       where: { email },
     });
     return found ? UserMapper.toDomain(found) : null;
   }
 
   async findById(id: string): Promise<User | null> {
-    const found = await this.prisma.user.findUnique({
+    const found = await this.prisma.client.user.findUnique({
       where: { id },
     });
     return found ? UserMapper.toDomain(found) : null;

@@ -10,23 +10,23 @@ export class PrismaShelterRepository implements ShelterRepository {
 
   async create(shelter: Shelter): Promise<void> {
     const data = ShelterMapper.toPersistence(shelter);
-    await this.prisma.shelter.create({ data });
+    await this.prisma.client.shelter.create({ data });
   }
 
   async findAll(): Promise<Shelter[]> {
-    const shelters = await this.prisma.shelter.findMany({
+    const shelters = await this.prisma.client.shelter.findMany({
        orderBy: { name: 'asc' }
     });
     return shelters.map(ShelterMapper.toDomain);
   }
 
   async findById(id: string): Promise<Shelter | null> {
-    const shelter = await this.prisma.shelter.findUnique({ where: { id } });
+    const shelter = await this.prisma.client.shelter.findUnique({ where: { id } });
     return shelter ? ShelterMapper.toDomain(shelter) : null;
   }
   
   async findByUserId(userId: string): Promise<Shelter | null> {
-    const shelter = await this.prisma.shelter.findUnique({ where: { userId } });
+    const shelter = await this.prisma.client.shelter.findUnique({ where: { userId } });
     return shelter ? ShelterMapper.toDomain(shelter) : null;
   }
 }

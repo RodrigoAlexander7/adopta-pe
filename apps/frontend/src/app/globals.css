@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+
+:root {
+  /* Base colors */
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Brand colors */
+  --primary: #d52c25;
+  --primary-hover: #8a1d1d;
+  --primary-soft: #f7c6c3;
+  --primary-dark-button: #8a1d1d;
+  
+  /* HSL format for Tailwind compatibility */
+  --hsl-background: 0 0% 100%;
+  --hsl-foreground: 222.2 84% 4.9%;
+  --hsl-card: 0 0% 100%;
+  --hsl-card-foreground: 222.2 84% 4.9%;
+  --hsl-popover: 0 0% 100%;
+  --hsl-popover-foreground: 222.2 84% 4.9%;
+  --hsl-primary: 4 80% 50%;
+  --hsl-primary-foreground: 0 0% 98%;
+  --hsl-secondary: 210 40% 96.1%;
+  --hsl-secondary-foreground: 222.2 47.4% 11.2%;
+  --hsl-muted: 210 40% 96.1%;
+  --hsl-muted-foreground: 215.4 16.3% 46.9%;
+  --hsl-accent: 210 40% 96.1%;
+  --hsl-accent-foreground: 222.2 47.4% 11.2%;
+  --hsl-destructive: 0 84.2% 60.2%;
+  --hsl-destructive-foreground: 210 40% 98%;
+  --hsl-border: 214.3 31.8% 91.4%;
+  --hsl-input: 214.3 31.8% 91.4%;
+  --hsl-ring: 4 80% 50%;
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-border: hsl(var(--hsl-border));
+  --color-input: hsl(var(--hsl-input));
+  --color-ring: hsl(var(--hsl-ring));
+  --color-card: hsl(var(--hsl-card));
+  --color-card-foreground: hsl(var(--hsl-card-foreground));
+  --color-popover: hsl(var(--hsl-popover));
+  --color-popover-foreground: hsl(var(--hsl-popover-foreground));
+  --color-primary-foreground: hsl(var(--hsl-primary-foreground));
+  --color-secondary: hsl(var(--hsl-secondary));
+  --color-secondary-foreground: hsl(var(--hsl-secondary-foreground));
+  --color-muted: hsl(var(--hsl-muted));
+  --color-muted-foreground: hsl(var(--hsl-muted-foreground));
+  --color-accent: hsl(var(--hsl-accent));
+  --color-accent-foreground: hsl(var(--hsl-accent-foreground));
+  --color-destructive: hsl(var(--hsl-destructive));
+  --color-destructive-foreground: hsl(var(--hsl-destructive-foreground));
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  border-color: hsl(var(--hsl-border));
+}
+
