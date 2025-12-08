@@ -7,7 +7,7 @@ interface StoryProps {
   title: string;
   content: string;
   image?: string;
-  user: { name: string };
+  user?: { name: string };
   createdAt: string;
 }
 
