@@ -6,12 +6,26 @@ import cookieParser from 'cookie-parser';
 
 const developerDocumentation = (app: INestApplication) => {
   const config = new DocumentBuilder()
-    .setTitle('Backend documentation')
+    .setTitle('Adopta-pe API')
     .setDescription(
-      'This API serves the endpoints required for all the functionalities of the application.',
+      'REST API for the pet adoption platform. Includes authentication, user management, pet listings, and adoption applications.',
     )
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('auth', 'Authentication endpoints')
+    .addTag('users', 'User management')
+    .addTag('pets', 'Pet listings and management')
+    .addTag('adoptions', 'Adoption applications')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'Enter JWT token',
+        in: 'header',
+      },
+      'JWT-auth',
+    )
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory());

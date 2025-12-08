@@ -1,9 +1,10 @@
 import { Controller, Res, Get, Request, UseGuards, Req } from '@nestjs/common';
 import { AuthService } from '@/auth/auth.service';
-
 import { AuthGuard } from '@nestjs/passport';
 import { ConfigService } from '@nestjs/config';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 
+@ApiTags('auth')
 @Controller('auth') // all the routes under 'auth'
 export class AuthController {
   constructor(
@@ -11,16 +12,17 @@ export class AuthController {
     private readonly configService: ConfigService,
   ) { }
 
-  // Call auth/google and then redirect to the google strategy (defined on google.Strategy)
-  // then the user is redirected to google login -> then is login we call the callback (defined on google.Strategy)
+  @ApiOperation({ summary: 'Initiate Google OAuth login' })
+  @ApiResponse({ status: 302, description: 'Redirects to Google login page' })
   @UseGuards(AuthGuard('google'))
   @Get('google')
   async googleAuth() {
     return 'Google Auth';
   }
 
-  // Passport change the auth code with a token
-  // So we call auth/google/callback and then call -> callbackOauthGoogle
+  @ApiOperation({ summary: 'Google OAuth callback' })
+  @ApiResponse({ status: 302, description: 'Redirects to frontend with JWT token' })
+  @ApiResponse({ status: 401, description: 'Authentication failed' })
   @UseGuards(AuthGuard('google'))
   @Get('google/callback')
   async googleAuthCallback(@Request() req, @Res() res) {
@@ -42,8 +44,10 @@ export class AuthController {
     }
   }
 
-  // Here we use the guard that we register on passport (see jwt.strategy.ts)
-  // Req is comming from Passport -> See google.strategy
+  @ApiOperation({ summary: 'Get current authenticated user info from token' })
+  @ApiResponse({ status: 200, description: 'Returns user info from JWT payload' })
+  @ApiResponse({ status: 401, description: 'Unauthorized - Invalid or missing token' })
+  @ApiBearerAuth('JWT-auth')
   @Get('me')
   @UseGuards(AuthGuard('jwt'))
   getProfile(@Request() req) {

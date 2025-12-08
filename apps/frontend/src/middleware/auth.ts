@@ -18,7 +18,7 @@ export function authMiddleware(req: NextRequest) {
   const isAuth = authRoutes.some((auth) => pathname.startsWith(auth));
 
   if (!token && isProtected) {
-    return NextResponse.redirect(new URL('/login', req.url));
+    return NextResponse.redirect(new URL('/auth/login', req.url));
   }
 
   if (token && isAuth) {
