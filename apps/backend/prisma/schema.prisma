@@ -92,8 +92,8 @@ model Pet {
   images      String[]
   createdAt   DateTime   @default(now())
 
-  shelterId     String
-  shelter       Shelter        @relation(fields: [shelterId], references: [id], onDelete: Cascade)
+  shelterId     String?
+  shelter       Shelter?       @relation(fields: [shelterId], references: [id], onDelete: Cascade)
   adoptionForms AdoptionForm[] @relation("PetAdoptionForms")
 
   @@map("pets")

@@ -19,8 +19,8 @@ class CreatePetDto {
   @ApiProperty({ enum: PetSize, description: 'Pet size', example: 'MEDIUM' })
   size: PetSize;
 
-  @ApiProperty({ description: 'Shelter ID', example: 'uuid-string' })
-  shelterId: string;
+  @ApiProperty({ description: 'Shelter ID (optional)', example: 'uuid-string', required: false })
+  shelterId?: string;
 
   @ApiProperty({ type: [String], required: false, description: 'Array of image URLs' })
   images?: string[];

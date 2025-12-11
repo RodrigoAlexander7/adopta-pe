@@ -33,7 +33,7 @@ export class Pet {
   isActive: boolean;
   images: string[];
   createdAt: Date;
-  shelterId: string;
+  shelterId?: string;
 
   constructor(
     id: string,
@@ -41,7 +41,7 @@ export class Pet {
     species: PetSpecies,
     gender: Gender,
     size: PetSize,
-    shelterId: string,
+    shelterId: string | undefined,
     createdAt: Date,
     images: string[] = [],
     isAdopted: boolean = false,

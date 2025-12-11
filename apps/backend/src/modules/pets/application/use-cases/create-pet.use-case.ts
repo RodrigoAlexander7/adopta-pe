@@ -7,7 +7,7 @@ interface CreatePetDto {
   species: PetSpecies;
   gender: Gender;
   size: PetSize;
-  shelterId: string;
+  shelterId?: string;
   images?: string[];
   breed?: string;
   age?: number;
@@ -27,7 +27,7 @@ export class CreatePetUseCase {
       dto.species,
       dto.gender,
       dto.size,
-      dto.shelterId,
+      dto.shelterId || undefined,
       new Date(), // createdAt
       dto.images || [],
       false, // isAdopted
