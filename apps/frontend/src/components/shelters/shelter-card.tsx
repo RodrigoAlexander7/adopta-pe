@@ -38,12 +38,12 @@ export function ShelterCard({ shelter }: { shelter: ShelterProps }) {
       
       <CardContent className="p-6 pt-2 flex-grow flex flex-col justify-between space-y-4">
         <p className="text-[hsl(var(--muted-foreground))] text-sm line-clamp-3">
-           {shelter.description || 'Dedicated to saving lives.'}
+           {shelter.description || 'Comprometidos con salvar vidas.'}
         </p>
         
         <div className="flex gap-2">
            <Link href={`/pets?shelterId=${shelter.id}`} className="flex-1">
-              <Button variant="outline" className="w-full">View Pets</Button>
+              <Button variant="outline" className="w-full">Ver mascotas</Button>
            </Link>
            {shelter.website && (
               <a href={shelter.website} target="_blank" rel="noopener noreferrer">
