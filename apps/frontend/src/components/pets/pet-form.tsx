@@ -30,18 +30,18 @@ export function PetForm() {
     e.preventDefault();
     
     if (formData.images.length === 0) {
-      alert('Please upload at least one image');
+      alert('Por favor sube al menos una imagen');
       return;
     }
 
     setLoading(true);
     try {
       await petsApi.create(formData);
-      alert('Pet published successfully!');
+      alert('¡Mascota publicada exitosamente!');
       router.push('/dashboard');
     } catch (error: any) {
       console.error('Failed to create pet:', error);
-      alert(error.response?.data?.message || 'Failed to publish pet. Please try again.');
+      alert(error.response?.data?.message || 'Error al publicar mascota. Por favor intenta nuevamente.');
     } finally {
       setLoading(false);
     }
@@ -56,7 +56,7 @@ export function PetForm() {
       {/* Images */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Pet Images *
+          Imágenes de la Mascota *
         </label>
         <ImageUpload
           images={formData.images}
@@ -69,7 +69,7 @@ export function PetForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Name *
+            Nombre *
           </label>
           <input
             type="text"
@@ -77,13 +77,13 @@ export function PetForm() {
             value={formData.name}
             onChange={(e) => updateField('name', e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-            placeholder="Enter pet's name"
+            placeholder="Ingresa el nombre de la mascota"
           />
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Species *
+            Especie *
           </label>
           <select
             required
@@ -101,14 +101,14 @@ export function PetForm() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Breed
+            Raza
           </label>
           <input
             type="text"
             value={formData.breed}
             onChange={(e) => updateField('breed', e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-            placeholder="e.g., Labrador, Persian"
+            placeholder="ej: Labrador, Persa, Mestizo"
           />
         </div>
 
@@ -121,13 +121,13 @@ export function PetForm() {
             value={formData.color}
             onChange={(e) => updateField('color', e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-            placeholder="e.g., Brown, White"
+            placeholder="ej: Marrón, Blanco, Tricolor"
           />
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Gender *
+            Sexo *
           </label>
           <select
             required
@@ -145,7 +145,7 @@ export function PetForm() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Size *
+            Tamaño *
           </label>
           <select
             required
@@ -163,7 +163,7 @@ export function PetForm() {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Age
+            Edad
           </label>
           <input
             type="number"
@@ -171,13 +171,13 @@ export function PetForm() {
             value={formData.age || ''}
             onChange={(e) => updateField('age', e.target.value ? parseInt(e.target.value) : undefined)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-            placeholder="Enter age"
+            placeholder="Ingresa la edad"
           />
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Age Unit
+            Unidad de Edad
           </label>
           <select
             value={formData.ageUnit}
@@ -196,28 +196,28 @@ export function PetForm() {
       {/* Description */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Description
+          Descripción
         </label>
         <textarea
           rows={4}
           value={formData.description}
           onChange={(e) => updateField('description', e.target.value)}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-          placeholder="Tell us about this pet's personality, habits, and what makes them special..."
+          placeholder="Cuéntanos sobre la personalidad, hábitos y qué hace especial a esta mascota..."
         />
       </div>
 
       {/* Health Info */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Health Information
+          Información de Salud
         </label>
         <textarea
           rows={3}
           value={formData.healthInfo}
           onChange={(e) => updateField('healthInfo', e.target.value)}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-          placeholder="Vaccination status, medical conditions, special needs..."
+          placeholder="Estado de vacunación, condiciones médicas, necesidades especiales..."
         />
       </div>
 
@@ -231,10 +231,10 @@ export function PetForm() {
           {loading ? (
             <>
               <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Publishing...
+              Publicando...
             </>
           ) : (
-            'Publish Pet'
+            'Publicar Mascota'
           )}
         </Button>
         <Button
@@ -243,7 +243,7 @@ export function PetForm() {
           onClick={() => router.back()}
           disabled={loading}
         >
-          Cancel
+          Cancelar
         </Button>
       </div>
     </form>

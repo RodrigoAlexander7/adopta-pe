@@ -2,37 +2,37 @@ import { PetSpecies, PetSize, Gender, AgeUnit, AdoptionStatus, UserRole } from '
 
 // Pet constants
 export const PET_SPECIES_LABELS: Record<PetSpecies, string> = {
-  [PetSpecies.DOG]: 'Dog',
-  [PetSpecies.CAT]: 'Cat',
-  [PetSpecies.BIRD]: 'Bird',
-  [PetSpecies.RABBIT]: 'Rabbit',
-  [PetSpecies.SQUIRREL]: 'Squirrel',
-  [PetSpecies.OTHER]: 'Other',
+  [PetSpecies.DOG]: 'Perro',
+  [PetSpecies.CAT]: 'Gato',
+  [PetSpecies.BIRD]: 'Ave',
+  [PetSpecies.RABBIT]: 'Conejo',
+  [PetSpecies.SQUIRREL]: 'Ardilla',
+  [PetSpecies.OTHER]: 'Otro',
 };
 
 export const PET_SIZE_LABELS: Record<PetSize, string> = {
-  [PetSize.SMALL]: 'Small',
-  [PetSize.MEDIUM]: 'Medium',
-  [PetSize.LARGE]: 'Large',
+  [PetSize.SMALL]: 'Pequeño',
+  [PetSize.MEDIUM]: 'Mediano',
+  [PetSize.LARGE]: 'Grande',
 };
 
 export const GENDER_LABELS: Record<Gender, string> = {
-  [Gender.MALE]: 'Male',
-  [Gender.FEMALE]: 'Female',
+  [Gender.MALE]: 'Macho',
+  [Gender.FEMALE]: 'Hembra',
 };
 
 export const AGE_UNIT_LABELS: Record<AgeUnit, string> = {
-  [AgeUnit.YEARS]: 'Years',
-  [AgeUnit.MONTHS]: 'Months',
+  [AgeUnit.YEARS]: 'Años',
+  [AgeUnit.MONTHS]: 'Meses',
 };
 
 // Adoption status constants
 export const ADOPTION_STATUS_LABELS: Record<AdoptionStatus, string> = {
-  [AdoptionStatus.PENDING]: 'Pending',
-  [AdoptionStatus.UNDER_REVIEW]: 'Under Review',
-  [AdoptionStatus.APPROVED]: 'Approved',
-  [AdoptionStatus.REJECTED]: 'Rejected',
-  [AdoptionStatus.COMPLETED]: 'Completed',
+  [AdoptionStatus.PENDING]: 'Pendiente',
+  [AdoptionStatus.UNDER_REVIEW]: 'En Revisión',
+  [AdoptionStatus.APPROVED]: 'Aprobado',
+  [AdoptionStatus.REJECTED]: 'Rechazado',
+  [AdoptionStatus.COMPLETED]: 'Completado',
 };
 
 export const ADOPTION_STATUS_COLORS: Record<AdoptionStatus, string> = {
@@ -45,9 +45,9 @@ export const ADOPTION_STATUS_COLORS: Record<AdoptionStatus, string> = {
 
 // User role constants
 export const USER_ROLE_LABELS: Record<UserRole, string> = {
-  [UserRole.ADOPTER]: 'Adopter',
-  [UserRole.SHELTER]: 'Shelter',
-  [UserRole.ADMIN]: 'Admin',
+  [UserRole.ADOPTER]: 'Adoptante',
+  [UserRole.SHELTER]: 'Refugio',
+  [UserRole.ADMIN]: 'Administrador',
 };
 
 // API endpoints
