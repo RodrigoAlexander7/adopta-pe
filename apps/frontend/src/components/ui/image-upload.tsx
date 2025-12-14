@@ -23,17 +23,17 @@ export function ImageUpload({ images, onChange, maxImages = 5 }: ImageUploadProp
     // Validate files
     for (const file of files) {
       if (!VALIDATION.ALLOWED_IMAGE_TYPES.includes(file.type)) {
-        alert(`Invalid file type: ${file.name}. Only JPEG, PNG, and WebP are allowed.`);
+        alert(`Tipo de archivo inválido: ${file.name}. Solo se permiten JPEG, PNG y WebP.`);
         return;
       }
       if (file.size > VALIDATION.MAX_IMAGE_SIZE) {
-        alert(`File too large: ${file.name}. Maximum size is ${formatFileSize(VALIDATION.MAX_IMAGE_SIZE)}.`);
+        alert(`Archivo muy grande: ${file.name}. Tamaño máximo ${formatFileSize(VALIDATION.MAX_IMAGE_SIZE)}.`);
         return;
       }
     }
 
     if (images.length + files.length > maxImages) {
-      alert(`Maximum ${maxImages} images allowed.`);
+      alert(`Máximo ${maxImages} imágenes permitidas.`);
       return;
     }
 
@@ -52,8 +52,8 @@ export function ImageUpload({ images, onChange, maxImages = 5 }: ImageUploadProp
 
       onChange([...images, ...base64Images]);
     } catch (error) {
-      console.error('Error uploading images:', error);
-      alert('Failed to upload images. Please try again.');
+      console.error('Error al cargar imágenes:', error);
+      alert('Error al cargar las imágenes. Por favor intenta nuevamente.');
     } finally {
       setUploading(false);
       if (fileInputRef.current) {
@@ -90,16 +90,16 @@ export function ImageUpload({ images, onChange, maxImages = 5 }: ImageUploadProp
               {uploading ? (
                 <>
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600" />
-                  <span className="text-sm text-gray-600">Uploading...</span>
+                  <span className="text-sm text-gray-600">Subiendo...</span>
                 </>
               ) : (
                 <>
                   <Upload className="w-8 h-8 text-gray-400" />
                   <span className="text-sm text-gray-600">
-                    Click to upload images ({images.length}/{maxImages})
+                    Haz clic para subir imágenes ({images.length}/{maxImages})
                   </span>
                   <span className="text-xs text-gray-400">
-                    JPEG, PNG, WebP up to {formatFileSize(VALIDATION.MAX_IMAGE_SIZE)}
+                    JPEG, PNG, WebP hasta {formatFileSize(VALIDATION.MAX_IMAGE_SIZE)}
                   </span>
                 </>
               )}
@@ -127,7 +127,7 @@ export function ImageUpload({ images, onChange, maxImages = 5 }: ImageUploadProp
               </button>
               {index === 0 && (
                 <div className="absolute bottom-2 left-2 bg-purple-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                  Primary
+                  Principal
                 </div>
               )}
             </div>
@@ -138,7 +138,7 @@ export function ImageUpload({ images, onChange, maxImages = 5 }: ImageUploadProp
       {images.length === 0 && (
         <div className="text-center py-8 text-gray-400">
           <ImageIcon className="w-12 h-12 mx-auto mb-2 opacity-30" />
-          <p className="text-sm">No images uploaded yet</p>
+          <p className="text-sm">Aún no se han subido imágenes</p>
         </div>
       )}
     </div>
