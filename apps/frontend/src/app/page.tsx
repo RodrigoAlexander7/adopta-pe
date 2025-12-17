@@ -15,26 +15,26 @@ export default function HomePage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
-                <span className="text-sm font-medium">Over 500 pets waiting for a home</span>
+               <span className="text-sm font-medium">Más de 500 mascotas esperando un hogar</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--primary))] to-purple-600 animate-in fade-in zoom-in duration-700">
-               Find Your New <br className="hidden md:block" /> Best Friend
+               Encuentra a tu nuevo <br className="hidden md:block" /> mejor amigo
             </h1>
             
             <p className="text-xl md:text-2xl text-[hsl(var(--muted-foreground))] max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
-               Open your heart and home to a rescue pet. Love changes everything.
+               Abre tu corazón y tu hogar a una mascota rescatada. El amor lo cambia todo.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
                <Link href="/pets">
-                  <Button size="lg" className="rounded-full text-lg h-14 px-8 shadow-xl shadow-primary/20">
-                     Adopt Now
+                     <Button size="lg" className="rounded-full text-lg h-14 px-8 shadow-xl shadow-primary/20">
+                     Adoptar ahora
                   </Button>
                </Link>
                <Link href="/shelters">
-                  <Button variant="outline" size="lg" className="rounded-full text-lg h-14 px-8 bg-transparent backdrop-blur-sm border-2">
-                     Learn More
+                     <Button variant="outline" size="lg" className="rounded-full text-lg h-14 px-8 bg-transparent backdrop-blur-sm border-2">
+                     Más información
                   </Button>
                </Link>
             </div>
@@ -49,24 +49,24 @@ export default function HomePage() {
                   <div className="w-12 h-12 mx-auto rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center">
                      <PawPrint size={24} />
                   </div>
-                  <h3 className="text-xl font-bold">Diverse Companions</h3>
-                  <p className="text-[hsl(var(--muted-foreground))]">From playful puppies to gentle seniors, find the perfect match for your lifestyle.</p>
+                  <h3 className="text-xl font-bold">Compañeros variados</h3>
+                  <p className="text-[hsl(var(--muted-foreground))]">Desde cachorros juguetones hasta adultos tranquilos, encuentra la mascota ideal para tu estilo de vida.</p>
                </div>
                
                <div className="p-6 rounded-2xl bg-[hsl(var(--card))] border border-[hsl(var(--border))] shadow-sm hover:shadow-lg transition-all text-center space-y-4">
                   <div className="w-12 h-12 mx-auto rounded-xl bg-red-100 text-red-600 flex items-center justify-center">
                      <Heart size={24} />
                   </div>
-                  <h3 className="text-xl font-bold">Saved Lives</h3>
-                  <p className="text-[hsl(var(--muted-foreground))]">Every adoption saves two lives: the pet you adopt and the one who takes their place.</p>
+                  <h3 className="text-xl font-bold">Vidas salvadas</h3>
+                  <p className="text-[hsl(var(--muted-foreground))]">Cada adopción salva dos vidas: la mascota que adoptas y la que ocupa su lugar.</p>
                </div>
 
                <div className="p-6 rounded-2xl bg-[hsl(var(--card))] border border-[hsl(var(--border))] shadow-sm hover:shadow-lg transition-all text-center space-y-4">
                   <div className="w-12 h-12 mx-auto rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
                      <Home size={24} />
                   </div>
-                  <h3 className="text-xl font-bold">Safe Process</h3>
-                  <p className="text-[hsl(var(--muted-foreground))]">Verified shelters and a secure adoption process to ensure happy homes.</p>
+                  <h3 className="text-xl font-bold">Proceso seguro</h3>
+                  <p className="text-[hsl(var(--muted-foreground))]">Refugios verificados y un proceso de adopción seguro para garantizar hogares felices.</p>
                </div>
             </div>
          </div>

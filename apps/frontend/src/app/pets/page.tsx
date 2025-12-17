@@ -79,10 +79,10 @@ export default function PetsPage() {
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-purple-600 bg-clip-text text-transparent">
-            Find Your Perfect Companion
+            Encuentra a tu compañero ideal
           </h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Browse our available pets and give them a loving home
+            Explora nuestras mascotas disponibles y dales un hogar lleno de cariño
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export default function PetsPage() {
             {filteredPets.length > 0 ? (
               <>
                 <div className="mb-4 text-sm text-gray-600">
-                  Showing {filteredPets.length} {filteredPets.length === 1 ? 'pet' : 'pets'}
+                  Mostrando {filteredPets.length} {filteredPets.length === 1 ? 'mascota' : 'mascotas'}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                   {filteredPets.map((pet) => (
@@ -112,10 +112,10 @@ export default function PetsPage() {
               <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100">
                 <PawPrint className="w-16 h-16 mx-auto mb-4 text-gray-300" />
                 <h3 className="text-xl font-semibold text-gray-700 mb-2">
-                  No pets found
+                  No se encontraron mascotas
                 </h3>
                 <p className="text-gray-500">
-                  Try adjusting your filters to see more results
+                  Intenta ajustar tus filtros para ver más resultados
                 </p>
               </div>
             )}

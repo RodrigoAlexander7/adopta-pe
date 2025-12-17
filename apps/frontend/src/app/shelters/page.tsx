@@ -44,10 +44,10 @@ export default function SheltersPage() {
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-purple-600 bg-clip-text text-transparent">
-            Our Partner Shelters
+            Refugios asociados
           </h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Meet the amazing organizations dedicated to animal welfare
+            Conoce las increíbles organizaciones dedicadas al bienestar animal
           </p>
         </div>
 
@@ -62,11 +62,11 @@ export default function SheltersPage() {
           <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
             <Building2 className="w-16 h-16 mx-auto mb-4 text-gray-300" />
             <h3 className="text-xl font-semibold text-gray-700 mb-2">
-              No shelters registered yet
-            </h3>
-            <p className="text-gray-500">
-              Check back soon for partner shelters
-            </p>
+                Aún no hay refugios registrados
+              </h3>
+              <p className="text-gray-500">
+                Vuelve pronto para ver los refugios colaboradores
+              </p>
           </div>
         )}
       </div>
