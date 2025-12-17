@@ -24,7 +24,7 @@ export function PetCard({ pet }: PetCardProps) {
         />
         {pet.isAdopted && (
           <div className="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-            Adopted
+            Adoptado
           </div>
         )}
         {!pet.isAdopted && (
@@ -73,7 +73,7 @@ export function PetCard({ pet }: PetCardProps) {
             disabled={pet.isAdopted}
             variant={pet.isAdopted ? "outline" : "default"}
           >
-            {pet.isAdopted ? 'View Details' : 'Learn More'}
+            {pet.isAdopted ? 'Ver detalles' : 'Más información'}
           </Button>
         </Link>
       </div>

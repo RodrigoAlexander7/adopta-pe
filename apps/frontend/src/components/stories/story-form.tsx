@@ -21,18 +21,18 @@ export function StoryForm() {
     e.preventDefault();
 
     if (formData.content.length < 50) {
-      alert('Story content must be at least 50 characters long');
+      alert('El contenido de la historia debe tener al menos 50 caracteres');
       return;
     }
 
     setLoading(true);
     try {
       await storiesApi.create(formData);
-      alert('Story published successfully!');
+      alert('¡Historia publicada con éxito!');
       router.push('/dashboard');
     } catch (error: any) {
       console.error('Failed to create story:', error);
-      alert(error.response?.data?.message || 'Failed to publish story. Please try again.');
+      alert(error.response?.data?.message || 'Error al publicar la historia. Por favor intenta de nuevo.');
     } finally {
       setLoading(false);
     }
@@ -47,7 +47,7 @@ export function StoryForm() {
       {/* Title */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Story Title *
+          Título de la historia *
         </label>
         <input
           type="text"
@@ -57,14 +57,14 @@ export function StoryForm() {
           value={formData.title}
           onChange={(e) => updateField('title', e.target.value)}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-          placeholder="Give your story a compelling title..."
+          placeholder="Dale un título llamativo a tu historia..."
         />
       </div>
 
       {/* Image */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Cover Image (Optional)
+          Imagen de portada (opcional)
         </label>
         <ImageUpload
           images={formData.image ? [formData.image] : []}
@@ -76,7 +76,7 @@ export function StoryForm() {
       {/* Content */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          Your Story *
+          Tu historia *
         </label>
         <textarea
           required
@@ -85,10 +85,10 @@ export function StoryForm() {
           value={formData.content}
           onChange={(e) => updateField('content', e.target.value)}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-          placeholder="Share your adoption journey, the joy your pet brings, challenges you overcame, and advice for future adopters..."
+          placeholder="Comparte tu experiencia de adopción, la alegría que te brinda tu mascota, los desafíos que superaste y consejos para futuros adoptantes..."
         />
         <p className="text-sm text-gray-500 mt-1">
-          {formData.content.length} characters (minimum 50)
+          {formData.content.length} caracteres (mínimo 50)
         </p>
       </div>
 
@@ -102,10 +102,10 @@ export function StoryForm() {
           {loading ? (
             <>
               <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Publishing...
+              Publicando...
             </>
           ) : (
-            'Publish Story'
+            'Publicar historia'
           )}
         </Button>
         <Button
@@ -114,7 +114,7 @@ export function StoryForm() {
           onClick={() => router.back()}
           disabled={loading}
         >
-          Cancel
+          Cancelar
         </Button>
       </div>
     </form>

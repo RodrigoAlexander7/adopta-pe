@@ -44,10 +44,10 @@ export default function StoriesPage() {
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-purple-600 bg-clip-text text-transparent">
-            Adoption Success Stories
+            Historias de adopción exitosas
           </h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Read heartwarming stories from families who found their perfect companions
+            Lee historias conmovedoras de familias que encontraron a sus compañeros perfectos
           </p>
         </div>
 
@@ -62,10 +62,10 @@ export default function StoriesPage() {
           <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
             <FileText className="w-16 h-16 mx-auto mb-4 text-gray-300" />
             <h3 className="text-xl font-semibold text-gray-700 mb-2">
-              No stories yet
+              Aún no hay historias
             </h3>
             <p className="text-gray-500">
-              Be the first to share your adoption journey!
+              ¡Sé el primero en compartir tu experiencia de adopción!
             </p>
           </div>
         )}

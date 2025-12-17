@@ -17,7 +17,7 @@ export default function NewStoryPage() {
           className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
         >
           <ArrowLeft size={20} />
-          Back to Dashboard
+          Volver al panel
         </Link>
 
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
@@ -28,9 +28,9 @@ export default function NewStoryPage() {
                 <FileText size={32} />
               </div>
               <div>
-                <h1 className="text-3xl font-bold">Share Your Adoption Story</h1>
+                <h1 className="text-3xl font-bold">Comparte tu historia de adopción</h1>
                 <p className="text-white/90 mt-1">
-                  Inspire others with your pet adoption journey
+                  Inspira a otros con tu experiencia de adopción
                 </p>
               </div>
             </div>
@@ -45,8 +45,8 @@ export default function NewStoryPage() {
         {/* Info Box */}
         <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
           <p className="text-sm text-blue-800">
-            <strong>Tip:</strong> Share the emotional journey, challenges you faced, and how your pet 
-            changed your life. Authentic stories inspire others to adopt!
+            <strong>Consejo:</strong> Comparte el camino emocional, los desafíos que enfrentaste y cómo tu mascota
+            cambió tu vida. ¡Las historias auténticas inspiran a otros a adoptar!
           </p>
         </div>
       </div>
